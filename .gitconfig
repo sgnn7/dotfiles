@@ -1,0 +1,29 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	editor = vim
+[user]
+	name = sgnn7
+	email = sgnn7@sgnn7.org
+[color]
+        status = auto
+        commit = auto
+        diff = auto
+        branch = auto
+[alias]
+        st = status
+        co = checkout
+        ci = commit
+        br = branch
+        ff = merge origin
+	diff = diff --ignore-space-change
+[apply]
+        whitespace = strip
+        whitespace = nowarn
+[http]
+	sslVerify = 0
+	sslverfiy = 0
+[credential]
+	helper = cache --timeout=28800
