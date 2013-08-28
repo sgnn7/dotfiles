@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=4.2.2
+Name=Eclipse
+Comment=Eclips 4.2.2
+Exec=/home/sg/apps/eclipse/eclipse
+Icon=/home/sg/apps/eclipse/icon.xpm
+Terminal=false
+Type=Application
+Categories=Utility;Application;

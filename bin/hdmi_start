@@ -1,0 +1,13 @@
+#!/bin/bash
+
+hdmi_stop
+sleep 1
+
+export DISPLAY=:8.0
+nohup optirun startlxde &
+nohup primusrun startlxde &
+sleep 3
+nohup synergys -n ubuntu --config $HOME/.synergy.conf --daemon --restart --display :0 -a 127.0.0.1:6667
+sleep 2
+nohup synergyc -n hdmi --daemon --restart --display :8 127.0.0.1:6667
+export DISPLAY=:0.0

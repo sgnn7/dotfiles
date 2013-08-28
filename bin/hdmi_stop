@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ps -ef | grep Xorg | grep :8 | awk {'print $2'} | sudo xargs kill > /dev/null
+killall synergys
+killall synergyc

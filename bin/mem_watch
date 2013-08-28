@@ -1,0 +1,13 @@
+#!/bin/bash -e
+
+if [ -z "${1}" ]
+then
+   echo "Need a command to run!"
+   exit 1
+fi
+
+${@} 2&>1 /tmp/mem_watch_output.log &
+pid=$!
+
+watch --differences -n 2 "cat /proc/${pid}/status | grep VmSize | awk '{print \$2 \$3}'" 
+kill $pid
