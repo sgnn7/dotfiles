@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for branch in $(git branch); do
+  if [[ $branch == issues* ]]; then
+    echo "Removing local branch $branch"
+    git branch -D $branch
+  fi
+done
