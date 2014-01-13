@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# This script tries to free as much of the RAM as possible by flushing the
+# caches
+
+if [[ $UID -ne 0 ]]; then
+  echo "This script needs to be run as root. Exiting"
+  exit 1
+fi
+
+old_ram=$(cat /proc/meminfo  | grep MemFree | awk '{print $2,$3}')
+
+echo "Syncing disk data..."
+sync
+
+echo "Clearing page cache..."
+echo 1 > /proc/sys/vm/drop_caches;
+
+
+echo "Clearing dentries and inodes..."
+echo 2 > /proc/sys/vm/drop_caches
+
+echo "Clearing page cache, dentries, and inodes..."
+echo 3 > /proc/sys/vm/drop_caches
+
+new_ram=$(cat /proc/meminfo  | grep MemFree | awk '{print $2,$3}')
+
+echo "$old_ram -> $new_ram"
