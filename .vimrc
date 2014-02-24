@@ -8,6 +8,8 @@ set shiftwidth=4
 set expandtab
 set hlsearch
 set incsearch
+set modeline
+
 
 " syntax on
 colorscheme default
