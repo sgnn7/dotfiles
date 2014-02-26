@@ -26,6 +26,9 @@ map <F6> :only<CR>
 map <F7> <C-w>^
 map <F12> :NERDTreeToggle<CR>
 
+" Disable annoying ex mode
+map Q <Nop>
+
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <Leader>a :Ack <C-r><C-w>
