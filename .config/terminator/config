@@ -4,6 +4,7 @@
   always_split_with_profile = True
   title_transmit_fg_color = "#2bb525"
 [keybindings]
+  reset = <Primary><Shift><Alt>r
 [profiles]
   [[default]]
     use_system_font = False
@@ -21,6 +22,7 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
     [[[window0]]]
       type = Window
       parent = ""
