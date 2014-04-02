@@ -16,4 +16,6 @@ alias cvm2='ssh dev1@vm2'
 alias sus='sudo -u $USER -- gnome-screensaver-command -l && sudo pm-suspend'
 alias ddst='ps -ef | grep dd | grep sudo | awk "{print \$2}" | xargs sudo kill -USR1'
 
+alias br='byobu-layout restore rails'
+
 stty -ixon
