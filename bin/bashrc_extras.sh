@@ -19,3 +19,5 @@ alias ddst='ps -ef | grep dd | grep sudo | awk "{print \$2}" | xargs sudo kill -
 alias br='byobu-layout restore rails'
 
 stty -ixon
+
+setxkbmap -option ctrl:nocaps
