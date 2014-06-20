@@ -34,5 +34,5 @@ spacer_end() {
   fi
 }
 
-export PS1="$modified_original_prompt$YELLOW\$(spacer_start)\$(git_branch)$RED\$(dirty_indicator)$YELLOW\$(spacer_end)$NORMAL$ "
+export PS1="$modified_original_prompt$YELLOW\$(spacer_start)\$(git_branch)$RED\$(dirty_indicator)$YELLOW\$(spacer_end)$NORMAL\342\230\242 "
 export PROMPT_COMMAND=""
