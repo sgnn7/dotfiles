@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 if [ $EUID != 0 ]; then
   echo "Not root. Extiting"
@@ -8,8 +8,9 @@ fi
 /sbin/modprobe cpufreq_ondemand > /dev/null 2>&1
 for cpu in /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor; do echo 'ondemand' > $cpu; done
 
-iw dev wlan0 set power_save on
 echo '1' > '/sys/module/snd_hda_intel/parameters/power_save';
+
+iw dev wlan0 set power_save on
 echo 'min_power' > '/sys/class/scsi_host/host4/link_power_management_policy';
 echo 'min_power' > '/sys/class/scsi_host/host5/link_power_management_policy';
 echo 'min_power' > '/sys/class/scsi_host/host2/link_power_management_policy';
