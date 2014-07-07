@@ -29,3 +29,5 @@
   sslverfiy = 0
 [push]
   default = simple
+[credential]
+  helper = cache --timeout=28800
