@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+if [ $EUID != 0 ]; then
+  echo "You need to be sudo to run this scripts. Exiting."
+  exit 1
+fi
+
+apt-get update || true
+apt-get dist-upgrade -dy
