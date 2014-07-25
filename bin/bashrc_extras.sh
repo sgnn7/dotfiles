@@ -1,4 +1,4 @@
-export PATH=~/bin:$PATH
+export PATH=$PATH:~/bin
 
 . fix_prompt.sh
 
