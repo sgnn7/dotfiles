@@ -33,4 +33,8 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <Leader>a :Ack <C-r><C-w>
 
-" hi Comment ctermfg=2
+hi Comment ctermfg=2
+
+if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
+  let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
+endif
