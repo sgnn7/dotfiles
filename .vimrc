@@ -33,7 +33,11 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <Leader>a :Ack <C-r><C-w>
 
+" Some custom colors
 hi Comment ctermfg=2
+hi StatusLineNC ctermfg=7 ctermbg=0 cterm=underline
+hi StatusLine ctermfg=7 ctermbg=0 cterm=undercurl,bold
+hi VertSplit ctermfg=7 ctermbg=0 cterm=NONE
 
 if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
   let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
