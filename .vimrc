@@ -1,6 +1,6 @@
 set cindent
-set smartindent
 set autoindent
+filetype plugin indent on
 " let &scrolloff=999-&scrolloff
 set tabstop=4
 filetype on
