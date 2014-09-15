@@ -12,6 +12,8 @@ for cpu in /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor; do echo 'power
 echo '1' > '/sys/module/snd_hda_intel/parameters/power_save';
 #echo '1' > /sys/devices/system/cpu/intel_pstate/no_turbo
 
+rfkill block bluetooth
+
 iw dev wlan0 set power_save on
 echo 'min_power' > '/sys/class/scsi_host/host4/link_power_management_policy';
 echo 'min_power' > '/sys/class/scsi_host/host5/link_power_management_policy';
