@@ -10,7 +10,6 @@ set hlsearch
 set incsearch
 set modeline
 
-
 " syntax on
 colorscheme default
 
@@ -18,7 +17,7 @@ set listchars=tab:>-,trail:·
 set list
 
 set number
-" let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$']
 " map <F3> :FufRenewCache<CR>
 
 map <F4> :FufCoverageFile<CR>
@@ -38,6 +37,14 @@ hi Comment ctermfg=2
 hi StatusLineNC ctermfg=7 ctermbg=0 cterm=underline
 hi StatusLine ctermfg=7 ctermbg=0 cterm=undercurl,bold
 hi VertSplit ctermfg=7 ctermbg=0 cterm=NONE
+
+" Better highlight for trailing spaces
+hi ExtraWhitespace ctermfg=white
+match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /$^/
+au InsertLeave * match ExtraWhitespace /\s\+$/
+au BufWinEnter * match ExtraWhitespace /\s\+$/
+au BufWinLeave * call clearmatches()
 
 if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
   let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
