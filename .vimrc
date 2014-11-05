@@ -40,10 +40,10 @@ hi VertSplit ctermfg=7 ctermbg=0 cterm=NONE
 
 " Better highlight for trailing spaces
 hi ExtraWhitespace ctermfg=white
-match ExtraWhitespace /\s\+$/
+match ExtraWhitespace /\s\+$\|\t/
 au InsertEnter * match ExtraWhitespace /$^/
-au InsertLeave * match ExtraWhitespace /\s\+$/
-au BufWinEnter * match ExtraWhitespace /\s\+$/
+au InsertLeave * match ExtraWhitespace /\s\+$\|\t/
+au BufWinEnter * match ExtraWhitespace /\s\+$\|\t/
 au BufWinLeave * call clearmatches()
 
 if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
