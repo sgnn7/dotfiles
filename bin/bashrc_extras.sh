@@ -2,8 +2,8 @@ export PATH=$PATH:~/bin
 
 . fix_prompt.sh
 
-export HISTSIZE=100000
-export HISTFILESIZE=100000
+export HISTSIZE=300000
+export HISTFILESIZE=300000
 
 # append to history
 shopt -s histappend
