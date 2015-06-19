@@ -9,6 +9,7 @@ set expandtab
 set hlsearch
 set incsearch
 set modeline
+set ruler
 
 " syntax on
 colorscheme default
