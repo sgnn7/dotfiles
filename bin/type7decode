@@ -1,0 +1,42 @@
+#!/usr/bin/python3 -u
+
+import sys
+
+class Type7Decrypter(object):
+    # Author: Srdjan Grubor
+    # License: Apache-2.0
+
+    MAGIC_VALUES = (0x64, 0x73, 0x66, 0x64, 0x3b, 0x6b, 0x66, 0x6f, 0x41, 0x2c, 0x2e,
+                    0x69, 0x79, 0x65, 0x77, 0x72, 0x6b, 0x6c, 0x64, 0x4a, 0x4b, 0x44,
+                    0x48, 0x53, 0x55, 0x42, 0x73, 0x67, 0x76, 0x63, 0x61, 0x36, 0x39,
+                    0x38, 0x33, 0x34, 0x6e, 0x63, 0x78, 0x76, 0x39, 0x38, 0x37, 0x33,
+                    0x32, 0x35, 0x34, 0x6b, 0x3b, 0x66, 0x67, 0x38, 0x37);
+
+    @classmethod
+    def decrypt(clazz, encoded_password):
+        decrypted_password = ""
+
+        if len(encoded_password) % 2 == 0:
+            salt_offset = int(encoded_password[0:2])
+
+            # Step through the password 2 characters at a time
+            for encoded_hex_index in range(2, len(encoded_password), 2): 
+                # Take the next literal 2-char block
+                encoded_hex_char = encoded_password[encoded_hex_index:encoded_hex_index + 2]
+
+                # Convert it to base16 numnber
+                encoded_char = int(encoded_hex_char, 16) 
+
+                # XOR it with the current salt index in the magic table and turn it
+                # into a letter
+                plaintext_char = chr(encoded_char ^ clazz.MAGIC_VALUES[salt_offset])
+
+                # Append the decoded character to our plaintext password
+                decrypted_password += plaintext_char
+
+                # Increment our index in the magic value table
+                salt_offset += 1
+
+        return decrypted_password
+
+print(Type7Decrypter.decrypt(sys.argv[1]))
