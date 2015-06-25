@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+sudo su - $USER -c "gnome-screensaver-command -l"
+sudo pm-suspend
