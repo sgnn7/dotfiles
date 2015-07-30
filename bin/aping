@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+DELAY=1.2
+FREQ=800
+
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 server"
+    exit 1
+fi
+
+if [ $# -gt 1 ]; then
+    FREQ=$(( $2 * 100 ))
+fi
+
+while [ 0 ];do
+    ping -c 1 -w 1 $1  >/dev/null && play -n -q synth 0.045 sin $FREQ gain -e;
+    sleep $DELAY;
+done
