@@ -2,37 +2,20 @@
 
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-NORMAL="\[\033[0m\]"
 BLUE="\[\033[0;34m\]"
 
-original_prompt="${PS1}"
-modified_original_prompt=$(echo -n "${original_prompt}" | sed 's/\\\$ $//g')
+BOLD_GREEN="\[\033[1;32m\]"
+BOLD_BLUE="\[\033[1;34m\]"
 
-dirty_indicator() {
-  if [[ -n "$(git status 2> /dev/null | tail -n1)" ]]; then
-    if [[ $(git status 2> /dev/null | tail -n1) != *"nothing to commit"* ]]; then
-      echo -n "*"
-    fi
-  fi 
-}
+NORMAL="\[\033[0m\]"
 
-git_branch() {
-  branch=`git branch 2>/dev/null | grep '^\*\ ' | awk '{print $2}'`
-  echo -n "${branch}"
-}
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_STATESEPARATOR="$RED"
 
-spacer_start() {
-  if [[ -n "$(git status 2> /dev/null | tail -n1)" ]]; then
-    echo -n "["
-  fi
-}
+# Don't show if we have a stash
+unset GIT_PS1_SHOWSTASHSTATE
+# We want our own colors
+unset GIT_PS1_SHOWCOLORHINTS
 
-spacer_end() {
-  if [[ -n "$(git status 2> /dev/null | tail -n1)" ]]; then
-    echo -n "]"
-  fi
-}
-
-export PS1="$modified_original_prompt$YELLOW\$(spacer_start)\$(git_branch)$RED\$(dirty_indicator)$YELLOW\$(spacer_end)$NORMAL\342\230\242 "
-export PROMPT_COMMAND=""
+export PROMPT_COMMAND="__git_ps1 \"$BOLD_GREEN\u@\h$NORMAL:$BOLD_BLUE\w$NORMAL\" \"\342\230\242 \" \"$YELLOW[%s$YELLOW]$NORMAL\""
