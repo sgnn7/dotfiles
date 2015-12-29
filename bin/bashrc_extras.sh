@@ -20,6 +20,12 @@ alias ddst='ps -ef | grep dd | grep sudo | awk "{print \$2}" | xargs sudo kill -
 
 alias br='byobu-layout restore rails'
 
+# I make this mistake way too often
+gi() {
+  echo -e "\e[1;31m!!!Get your spelling in order!!!\e[0m"
+  return 1
+}
+
 stty -ixon
 
 setxkbmap -option ctrl:nocaps
