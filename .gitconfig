@@ -24,9 +24,6 @@
 [apply]
   whitespace = strip
   whitespace = nowarn
-[http]
-  sslVerify = 0
-  sslverfiy = 0
 [push]
   default = simple
 [credential]
