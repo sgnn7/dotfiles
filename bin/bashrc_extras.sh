@@ -32,4 +32,4 @@ setxkbmap -option ctrl:nocaps
 
 # "Clear" our session ssh-agent. We don't want to send our keys to too many places.
 # XXX: Don't forget to add `trap "ssh-agent -k" EXIT` to .bashrc since this shell exits
-eval "$(ssh-agent)"
+eval "$(ssh-agent)" > /dev/null
