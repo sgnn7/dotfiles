@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-CURRENT_DIR=$(dirname $0)
+CURRENT_DIR=$(pwd)
 BASE_URI="http://kernel.ubuntu.com/~kernel-ppa/mainline"
 FINGERPRINT="60AA 7B6F 3043 4AE6 8E56  9963 E50C 6A09 17C6 22B0"
 ARCH=$(dpkg --print-architecture)
@@ -34,6 +34,8 @@ version_page=$(curl -sL "${version_uri}")
 echo "Making the directory..."
 target_dir="${CURRENT_DIR}/${highest_version##v}"
 mkdir -p "${target_dir}"
+echo "Directory $target_dir made"
+
 pushd "${target_dir}" >/dev/null
   echo "Checking CHECKSUM signature..."
   wget -qN "${version_uri}/CHECKSUMS"
