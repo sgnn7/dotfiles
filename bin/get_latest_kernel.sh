@@ -10,6 +10,9 @@ declare -A PACKAGES=([linux-image]="linux-image- generic_ ${ARCH}" \
                      [linux-headers-all]="linux-headers- _all\.deb" \
                     )
 
+echo "Grabbing the GPG key"
+gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys "${FINGERPRINT}"
+
 echo "Getting the version page..."
 kernel_versions=$(curl -sL "${BASE_URI}" | sed -e 's/.*<a href="\([^\/"]*\).*/\1/g' | grep '^v')
 
