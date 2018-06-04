@@ -1,17 +1,26 @@
+set runtimepath^=~/.vim/bundle/nerdtree
+set runtimepath^=~/.vim/bundle/syntastic
+set runtimepath^=~/.vim/bundle/vim-buftabline
+set runtimepath^=~/.vim/bundle/vim-go
+set runtimepath^=~/.vim/bundle/vim-mucomplete
+
+" Ugh.. OSX
+" set term=builtin_ansi
+
 set cindent
 set autoindent
 filetype plugin indent on
 " let &scrolloff=999-&scrolloff
 set tabstop=4
 filetype on
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 set hlsearch
 set incsearch
 set modeline
 set ruler
 
-" syntax on
+syntax on
 colorscheme default
 
 set listchars=tab:>-,trail:·
@@ -19,12 +28,19 @@ set list
 
 set number
 let NERDTreeIgnore = ['\.pyc$']
-" map <F3> :FufRenewCache<CR>
 
-map <F4> :FufCoverageFile<CR>
-map <F6> :only<CR>
-map <F7> <C-w>^
-map <F12> :NERDTreeToggle<CR>
+" VIM buftabline Map
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+
+" vim-go
+let g:go_version_warning = 0
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 " Disable annoying ex mode
 map Q <Nop>
@@ -32,6 +48,13 @@ map Q <Nop>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <Leader>a :Ack <C-r><C-w>
+nnoremap <Leader>. :NERDTreeToggle<CR>
+
+" vim-mucomplete
+set completeopt+=menuone
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+" let g:mucomplete#enable_auto_at_startup = 1
 
 " Some custom colors
 hi Comment ctermfg=2
@@ -46,7 +69,3 @@ au InsertEnter * match ExtraWhitespace /$^/
 au InsertLeave * match ExtraWhitespace /\s\+$\|\t/
 au BufWinEnter * match ExtraWhitespace /\s\+$\|\t/
 au BufWinLeave * call clearmatches()
-
-if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
-  let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
-endif

@@ -1,0 +1,15 @@
+[submodule ".vim/repos/nerdtree"]
+	path = .vim/repos/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/repos/vim-buftabline"]
+	path = .vim/repos/vim-buftabline
+	url = https://github.com/ap/vim-buftabline
+[submodule ".vim/repos/syntastic"]
+	path = .vim/repos/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
+[submodule ".vim/repos/vim-go"]
+	path = .vim/repos/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule ".vim/repos/vim-mucomplete"]
+	path = .vim/repos/vim-mucomplete
+	url = https://github.com/lifepillar/vim-mucomplete.git
