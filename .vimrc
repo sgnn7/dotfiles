@@ -7,6 +7,9 @@ set runtimepath^=~/.vim/bundle/vim-mucomplete
 " Ugh.. OSX
 " set term=builtin_ansi
 
+scriptencoding utf-8
+set encoding=utf-8
+
 set cindent
 set autoindent
 filetype plugin indent on
@@ -70,7 +73,7 @@ au InsertLeave * if index(blacklist, &ft) < 0 | match ExtraWhitespace /\s\+$\|\t
 au BufWinEnter * if index(blacklist, &ft) < 0 | match ExtraWhitespace /\s\+$\|\t/ | endif
 au BufWinLeave * call clearmatches()
 
-au BufWinEnter * if index(blacklist, &ft) < 0 | setlocal listchars=tab:>-,trail:·  | endif
+au BufWinEnter * if index(blacklist, &ft) < 0 | setlocal listchars=tab:>-,trail:· | endif
 set list
 
 " Golang sucks
@@ -78,4 +81,4 @@ au FileType go setlocal noexpandtab
 au FileType go setlocal shiftwidth=4
 au FileType go setlocal softtabstop=4
 au FileType go setlocal tabstop=4
-au FileType go setlocal listchars=tab:»\ ,trail:·,space:·
+au FileType go setlocal listchars=tab:»\ ,trail:·,space:\ 
