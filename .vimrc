@@ -23,9 +23,6 @@ set ruler
 syntax on
 colorscheme default
 
-set listchars=tab:>-,trail:·
-set list
-
 set number
 let NERDTreeIgnore = ['\.pyc$']
 
@@ -63,9 +60,22 @@ hi StatusLine ctermfg=7 ctermbg=0 cterm=undercurl,bold
 hi VertSplit ctermfg=7 ctermbg=0 cterm=NONE
 
 " Better highlight for trailing spaces
+" but add exclusions for sucky Golang
 hi ExtraWhitespace ctermfg=white
 match ExtraWhitespace /\s\+$\|\t/
-au InsertEnter * match ExtraWhitespace /$^/
-au InsertLeave * match ExtraWhitespace /\s\+$\|\t/
-au BufWinEnter * match ExtraWhitespace /\s\+$\|\t/
+
+let blacklist = ['go']
+au InsertEnter * if index(blacklist, &ft) < 0 | match ExtraWhitespace /$^/ | endif
+au InsertLeave * if index(blacklist, &ft) < 0 | match ExtraWhitespace /\s\+$\|\t/ | endif
+au BufWinEnter * if index(blacklist, &ft) < 0 | match ExtraWhitespace /\s\+$\|\t/ | endif
 au BufWinLeave * call clearmatches()
+
+au BufWinEnter * if index(blacklist, &ft) < 0 | setlocal listchars=tab:>-,trail:·  | endif
+set list
+
+" Golang sucks
+au FileType go setlocal noexpandtab
+au FileType go setlocal shiftwidth=4
+au FileType go setlocal softtabstop=4
+au FileType go setlocal tabstop=4
+au FileType go setlocal listchars=tab:»\ ,trail:·,space:·
