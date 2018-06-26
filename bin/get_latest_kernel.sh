@@ -9,6 +9,7 @@ declare -A FILES=([sources]="SOURCES" \
                   [commit]="COMMIT" \
                   [linux-image]="linux-image- generic_ ${ARCH}" \
                   [linux-headers]="linux-headers- generic_ ${ARCH}" \
+                  [linux-modules]="linux-modules- generic_ ${ARCH}" \
                   [linux-headers-all]="linux-headers- _all\.deb" \
                  )
 
