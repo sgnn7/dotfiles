@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+minikube start --memory 4096 \
+               --kubernetes-version "v1.10.0" \
+               --vm-driver virtualbox \
+               --disk-size 40g
