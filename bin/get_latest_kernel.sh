@@ -73,10 +73,18 @@ pushd "${target_dir}" >/dev/null
     # echo "Filters: $filters"
     package_line="${version_page}"
     for filter in ${filters}; do
-      package_line=$(echo "${package_line}" | grep "${filter}")
+      set +e
+        package_line=$(echo "${package_line}" | grep "${filter}")
+      set -e
+
+      if [[ -z "$package_line" ]]; then
+        echo "ERROR! Filters '${filters}' were unable to match anything on the version page!"
+        exit 1
+      fi
     done
 
     package_name=$(echo "${package_line}" | sed -n '1p' | sed -e 's/.*<a href="\([^"]*\).*/\1/')
+
     # echo "Downloading ${package_name}"
     wget -q --show-progress "${version_uri}/${package_name}" -O "${package_name}"
 
