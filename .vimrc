@@ -82,3 +82,10 @@ au FileType go setlocal shiftwidth=4
 au FileType go setlocal softtabstop=4
 au FileType go setlocal tabstop=4
 au FileType go setlocal listchars=tab:»\ ,trail:·,space:\ 
+
+" Python3 support for syntastic
+let g:syntastic_python_python_exec = 'python3'
+
+function Py2()
+  let g:syntastic_python_python_exec = 'python'
+endfunction
