@@ -1,0 +1,5 @@
+# VIM swapfiles
+*.sw[po]
+
+# OSX
+**/.DS_Store

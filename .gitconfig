@@ -4,6 +4,7 @@
   bare = false
   logallrefupdates = true
   editor = vim
+  excludesfile = ~/.gitignore_global
 [user]
   name = Srdjan Grubor
   email = sgnn7@sgnn7.org
