@@ -8,8 +8,14 @@ if ! command -v gitleaks &> /dev/null; then
 fi
 
 if grep -q whitelist .gitleaks.toml &> /dev/null; then
-  branch=$(git branch | grep \* | cut -d " " -f2)
+  branch=$(git rev-parse --abbrev-ref HEAD)
   commits="$(git log origin/master..HEAD --oneline | wc -l | xargs)"
+
+  if [ "$commits" -eq 0 ]; then
+    echo "WARN: No commits different from origin/master - skipping gitleaks..."
+    exit 0
+  fi
+
   gitleaks -v \
            --repo-path . \
            --config .gitleaks.toml \
