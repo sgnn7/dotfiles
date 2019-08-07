@@ -5,6 +5,7 @@
   logallrefupdates = true
   editor = vim
   excludesfile = ~/.gitignore_global
+  hooksPath = ~/.git_hooks
 [user]
   name = Srdjan Grubor
   email = sgnn7@sgnn7.org

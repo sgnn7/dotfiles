@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+if ! command -v gitleaks &> /dev/null; then
+  echo "WARN: Gitleaks not installed!"
+  exit 0
+fi
+
+if grep -q whitelist .gitleaks.toml &> /dev/null; then
+  branch=$(git branch | grep \* | cut -d " " -f2)
+  commits="$(git log origin/master..HEAD --oneline | wc -l | xargs)"
+  gitleaks -v \
+           --repo-path . \
+           --config .gitleaks.toml \
+           --branch "$branch" \
+           --depth "$commits"
+else
+  echo "WARN: Gitleaks config not found - using defaults..."
+  gitleaks -v --repo-path .
+fi
