@@ -4,6 +4,7 @@ export PATH=$PATH:~/bin
 
 export HISTSIZE=300000
 export HISTFILESIZE=300000
+export HISTCONTROL=ignoredups:ignorespace
 
 # append to history
 shopt -s histappend
