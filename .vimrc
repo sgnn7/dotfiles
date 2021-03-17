@@ -67,6 +67,10 @@ hi VertSplit ctermfg=7 ctermbg=0 cterm=NONE
 hi ExtraWhitespace ctermfg=white
 match ExtraWhitespace /\s\+$\|\t/
 
+" Better highlighting for nbsp since
+" this can mess up parsing of variables
+au VimEnter,BufWinEnter * syn match ErrorMsg " "
+
 let blacklist = ['go']
 au InsertEnter * if index(blacklist, &ft) < 0 | match ExtraWhitespace /$^/ | endif
 au InsertLeave * if index(blacklist, &ft) < 0 | match ExtraWhitespace /\s\+$\|\t/ | endif
