@@ -67,17 +67,13 @@ hi VertSplit ctermfg=7 ctermbg=0 cterm=NONE
 hi ExtraWhitespace ctermfg=white
 match ExtraWhitespace /\s\+$\|\t/
 
-" Better highlighting for nbsp since
-" this can mess up parsing of variables
-au VimEnter,BufWinEnter * syn match ErrorMsg " "
-
 let blacklist = ['go']
 au InsertEnter * if index(blacklist, &ft) < 0 | match ExtraWhitespace /$^/ | endif
 au InsertLeave * if index(blacklist, &ft) < 0 | match ExtraWhitespace /\s\+$\|\t/ | endif
 au BufWinEnter * if index(blacklist, &ft) < 0 | match ExtraWhitespace /\s\+$\|\t/ | endif
 au BufWinLeave * call clearmatches()
 
-au BufWinEnter * if index(blacklist, &ft) < 0 | setlocal listchars=tab:>-,trail:· | endif
+au BufWinEnter * if index(blacklist, &ft) < 0 | setlocal listchars=tab:>-,trail:·,nbsp:␣ | endif
 set list
 
 " Golang sucks
@@ -85,7 +81,7 @@ au FileType go setlocal noexpandtab
 au FileType go setlocal shiftwidth=4
 au FileType go setlocal softtabstop=4
 au FileType go setlocal tabstop=4
-au FileType go setlocal listchars=tab:»\ ,trail:·,space:\ 
+au FileType go setlocal listchars=tab:»\ ,trail:·,space:\ ,nbsp:␣
 
 " Python3 support for syntastic
 let g:syntastic_python_python_exec = 'python3'
