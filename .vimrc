@@ -35,12 +35,14 @@ nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
 " vim-go
+" :GoUpdateBinaries to install deps
 let g:go_version_warning = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_doc_popup_window = 1
 
 " Disable annoying ex mode
 map Q <Nop>
@@ -83,6 +85,19 @@ au FileType go setlocal softtabstop=4
 au FileType go setlocal tabstop=4
 au FileType go setlocal listchars=tab:»\ ,trail:·,space:\ ,nbsp:␣
 au FileType go setlocal fileformat=unix
+
+" Common Go commands - vim-go
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>ae <Plug>(go-alternate-edit)
+au FileType go nmap <Leader>av <Plug>(go-alternate-vertical)
 
 " Python3 support for syntastic
 let g:syntastic_python_python_exec = 'python3'
