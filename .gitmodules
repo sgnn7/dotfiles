@@ -13,3 +13,6 @@
 [submodule ".vim/repos/vim-mucomplete"]
 	path = .vim/repos/vim-mucomplete
 	url = https://github.com/lifepillar/vim-mucomplete.git
+[submodule ".vim/repos/copilot.vim"]
+	path = .vim/repos/copilot.vim
+	url = https://github.com/github/copilot.vim.git
