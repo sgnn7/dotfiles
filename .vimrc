@@ -38,6 +38,9 @@ set hidden
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
+" Buffer destroy
+nnoremap <C-Q> :bp<cr>:bd #<cr>
+
 " vim-go
 " :GoUpdateBinaries to install deps
 let g:go_version_warning = 0
