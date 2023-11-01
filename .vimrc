@@ -1,3 +1,4 @@
+set runtimepath^=~/.vim/bundle/copilot.vim
 set runtimepath^=~/.vim/bundle/nerdtree
 set runtimepath^=~/.vim/bundle/syntastic
 set runtimepath^=~/.vim/bundle/vim-buftabline
@@ -55,6 +56,25 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_doc_popup_window = 1
 
+" copilot.vim
+"
+" - Enable copilot only on some file types
+let g:copilot_filetypes = {
+    \ '*': v:false,
+    \ 'gitcommit': v:true,
+    \ 'markdown': v:true,
+    \ 'python': v:true,
+    \ 'go': v:true,
+    \ 'yaml': v:true,
+    \ }
+
+" - Disable Copilot on big files
+ autocmd BufReadPre *
+     \ let f=getfsize(expand("<afile>"))
+     \ | if f > 100000 || f == -2
+     \ | let b:copilot_enabled = v:false
+     \ | endif
+
 " Disable annoying ex mode
 map Q <Nop>
 
@@ -68,6 +88,10 @@ set completeopt+=menuone
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
 " let g:mucomplete#enable_auto_at_startup = 1
+
+" - Move tab autocomplete to s-Tab (to accomodate copilot)
+autocmd VimEnter * unmap! <s-Tab>
+autocmd VimEnter * imap <s-Tab> <Plug>(MUcompleteFwd)
 
 " Some custom colors
 hi Comment ctermfg=2
