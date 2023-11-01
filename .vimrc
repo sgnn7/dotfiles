@@ -7,6 +7,10 @@ set runtimepath^=~/.vim/bundle/vim-mucomplete
 " Ugh.. OSX
 " set term=builtin_ansi
 
+" Try out FuzzyFinder
+set rtp+=/usr/local/opt/fzf
+nnoremap <Leader>, :FZF!<CR>
+
 scriptencoding utf-8
 set encoding=utf-8
 
