@@ -109,6 +109,10 @@ au FileType go nmap <Leader>av <Plug>(go-alternate-vertical)
 " Python3 support for syntastic
 let g:syntastic_python_python_exec = 'python3'
 
+let g:go_fmt_options = {
+\ 'goimports': '-local github.com/DataDog/datadog-agent',
+\ }
+
 function Py2()
   let g:syntastic_python_python_exec = 'python'
 endfunction
