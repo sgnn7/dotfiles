@@ -1,0 +1,30 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export DOCKER_CLI_HINTS=false
+export HISTCONTROL=ignoredups:ignorespace
+export CLICOLOR=1
+
+alias ls="ls -G"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# Python dev paths
+python_ver="3.12"
+export PATH="/usr/local/opt/python@${python_ver}/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/python@${python_ver}/lib"
+export PKG_CONFIG_PATH="/usr/local/opt/python@${python_Ver}/lib/pkgconfig"
+
+if [ -r ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+if [[ -d "$HOME/.local/bin" ]]; then
+  export PATH="${HOME}/.local/bin:${PATH}"
+fi
+
+if [[ -d "$HOME/bin" ]]; then
+  export PATH="${HOME}/bin:${PATH}"
+fi
+
