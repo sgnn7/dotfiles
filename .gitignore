@@ -1,1 +1,8 @@
 *.swp
+
+# Exclude some binaries that should not be checked in
+bin/dd2gh
+bin/kctx
+bin/kns
+bin/kubectl-datadog
+bin/kubectl-eds
