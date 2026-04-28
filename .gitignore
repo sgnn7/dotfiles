@@ -6,3 +6,6 @@ bin/kctx
 bin/kns
 bin/kubectl-datadog
 bin/kubectl-eds
+
+# Exclude keyring itself
+.gnupg/
